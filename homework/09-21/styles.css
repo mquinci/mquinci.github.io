@@ -1,7 +1,7 @@
 /* test */
 /* <a class="newHomework"></a> */
 span {
-       color:red
+       color:rgb(76, 0, 255)
 }
 a.oldHomework {
     color:rgb(111, 111, 218)
