@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+ <html>
+     <head>
+         <meta charset="utf-8"/>
+         <title>Cider Donuts?</title>
+     </head>
+     <center>
+       <!--Background color and Instructions-->
+       <body style="background-color:rgb(230, 222, 176);">
+          <h3 style="color: red;">Do you have enough apple cider donuts?</h3>
+          <p style="color: rgb(5, 75, 5);">Select the number of apple cider donuts you have from the dropdown menu.</p>
+      
+      <!--Defining the options for the dropdown menu-->
+          <label for="donuts">Make your selection: </label>
+          <select id="donuts">
+            <option value="">--Make a choice--</option>
+            <option value="option1">0</option>
+            <option value="option2">1-5</option>
+            <option value="option3">5</option>
+            <option value="option4">>5</option>
+          </select>
+
+        <p></p>
+
+          <script>
+            //Define elements that will provide response
+              const select = document.querySelector('select');
+              const para = document.querySelector('p');
+      
+              select.onchange = setDonuts;
+            
+            //Defining conditional function
+              function setDonuts() {
+                const choice = select.value;
+
+                if(choice === 'option1') {
+                  para.textContent = 'Go get some cider donuts right now!!';
+                  } 
+                else if(choice === 'option2') {
+                  para.textContent = 'You need to get more apple cider donuts.';
+                  } 
+                else if(choice === 'option3') {
+                  para.textContent = 'You have quite a few apple cider donuts, but it never hurts to get more.';
+                  } 
+                else if(choice === 'option4') {
+                  para.textContent = 'Get some more apple cider donuts and put them in the freezer for the winter.';
+                  } 
+                
+              }
+              </script>
+              <img src="/homework/10-05/Apple-cider-doughnuts.jpg" width="500" height="281.25" alt="The most beautiful apple cider donuts one has ever seen">
+      </center>
+
+       
+
+      </body>
+ </html>
