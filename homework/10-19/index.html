@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Homework</title>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+
+        <style>
+
+        </style>
+    </head>
+    
+    <body>
+        <center><h1 id="title">Dataset for Final Project</h1></center>
+
+
+        <ul>
+            <li><b>World Happiness Report:</b><a href="https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021?select=world-happiness-report-2021.csv">Click Here</class></a></li>
+            <li><b>Quality of Life Index:</b><a href="https://www.kaggle.com/cityapiio/countries-quality-of-life-index-2020-year">Click Here</class></a></li>
+            <li><b>Combined Dataset:</b><a href="/homework/10-19/worldhappinessQOL_2021.csv">Click Here</class></a></li>
+
+        </ul>
+
+        <script>
+            //load .txt files
+            d3.text("data.txt", function(error, txtdata) {
+                console.log(txtdata);
+            });
+            
+            //load .csv files
+            d3.csv("data.csv", function(error, csvdata) {
+                csvdata.forEach(function(row) {
+                row.value = parseFloat(row.value);
+                });
+
+                var usData = csvdata.filter(function(row){
+                return row.country == "usa";
+                });
+                console.log("usData", usData);
+
+                var dataMinimum = d3.min(csvdata, function(row) {
+                    return row.value;
+                });
+                console.log("min", dataMinimum);
+
+                var groupData = d3.nest()
+                    .key(function(d) {
+                    return d.country;
+                    })
+                    .entries(csvdata);
+                console.log("groupData", groupData);
+
+                var nameMapping = {
+                    usa: "United States",
+                    mexico: "Mexico",
+                    china: "China"
+                };
+
+                csvdata.forEach(function(row){
+                    row.fullname = nameMapping[row.country];
+                });
+            
+                console.log(csvdata);
+            });
+
+
+
+            //load .json files
+            d3.json("data.json", function(error, jsondata) {
+                console.log(jsondata);
+            });
+
+            //load json api
+            var url = "https://datausa.io/api/data?measures=Population&year=latest";
+            d3.json(url, function(error, popdata) {
+                console.log(popdata);
+            });
+
+
+        </script>
+        
+    </body>
+</html>
