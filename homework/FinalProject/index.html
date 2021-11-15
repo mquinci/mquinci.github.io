@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <title>World Happiness Over Time</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link href='https://fonts.googleapis.com/css?family=Happy Monkey' rel='stylesheet'>
+  </head>
+  <body>
+    <div id="banner">
+        <h1>How has world happiness changed over time?</h1>
+    </div>
+      <div class="section">
+        <p>Every year, the Sustainable Development Solutions Network publishes a World Happiness Report that examines how “happy” the people living in a given country are. These “happiness scores” are viewed in the context of 6 factors: Logged GDP per capita, Social support, Healthy life expectancy, Freedom to make life choices, Generosity, and Perception of corruption. This project will focus no happiness trends from 2015-2020 through the lens of social support, healthy life expectancy, and freedom to make life choices. 
+          <br><br>How can this information inform how we evaluate happiness in our lives?</p>
+        <svg id="map"></svg>
+      </div>
+      <div class="d1">
+        <svg id="d1">
+          <rect width="285px" height="100px"/>
+        </svg>
+      </div>
+      <div class="d1">
+        <svg id="d1">
+          <rect width="285px" height="100px" />
+        </svg>
+      </div>
+      <div class="d1">
+        <svg id="d1">
+          <rect width="285px" height="100px" />
+        </svg>
+      </div>
+      <div class="d1">
+        <svg id="d1">
+          <rect width="285px" height="100px" />
+        </svg>
+      </div>
+      <div class="section">
+        <svg id="chart1"></svg>
+      </div>
+      <div class="section1">
+        <div class="dropdown">
+          <button class="dropbtn">Select a year</button>
+          <div class="dropdown-content">
+            <a href="#">2015</a>
+            <a href="#">2016</a>
+            <a href="#">2017</a>
+            <a href="#">2018</a>
+            <a href="#">2019</a>
+            <a href="#">2020</a>
+          </div>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem lacus, molestie sit amet massa sit amet, posuere egestas tellus. Maecenas et nulla eget sapien fermentum pharetra. Nam nec ipsum quis nisi aliquet convallis. Vestibulum quis sagittis nisi. Fusce pulvinar efficitur elementum.</p>
+      </div>
+      <div class = "chart2">
+        <svg class = "chart2">
+          <rect width="300px" height="300px"/>
+        </svg>
+      </div>
+      <div class = "chart3">
+        <svg class = "chart3">
+          <rect width="300px" height="300px"/>
+        </svg>
+      </div>
+      <div class = "chart4">
+        <svg class = "chart4">
+          <rect width="300px" height="300px"/>
+        </svg>
+      </div>
+
+      <div id="tooltip">
+        <h2 id="title"></h2>
+        Value: <span id="value"></span>
+      </div>
+
+      <script src="./banner.js"></script>
+      <script src="./chart1.js"></script>
+
+  </body>
+</html>

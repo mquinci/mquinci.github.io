@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+  }
+  
+  #banner {
+    background-color: #b9b4b4bb;
+    background-image: url('https://cdn2.thecatapi.com/images/aiu.jpg');
+    background-position: center;
+    background-size: cover;
+    padding: 20vh 20px;
+    text-align: center;
+  }
+
+  body {
+    font-family: "Comic Sans MS";
+    margin: 0;
+    text-align: center;
+  }
+
+  .section {
+    display: flex;
+    padding: 50px;
+  }
+  
+  .section p {
+    flex: 1;
+  }
+  
+  .section svg {
+    border: 1px solid red;
+    flex: 2;
+    height: 300px;
+    margin: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .section {
+      flex-direction: column;
+    }
+    .section svg {
+      flex: none;
+      width:100%;
+    }
+  }
+
+  #tooltip {
+    background: white;
+    border: 1pm solid black;
+    display: none;
+    position: absolute;
+  }
+  
