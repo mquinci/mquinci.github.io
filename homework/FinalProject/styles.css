@@ -19,7 +19,24 @@ body {
     text-align: center;
   }
 
+  .row {
+    display: flex;
+  }
+
+  .column {
+    flex: 1;
+  }
+
+  .button4 {
+    padding: 60px 40px;
+    border-radius: 8px;
+    background-color: #f3db53;
+    margin: 20px;
+    }
+    
+
   .section {
+    align-items: center;
     display: flex;
     padding: 50px;
   }
@@ -33,50 +50,6 @@ body {
     flex: 2;
     height: 300px;
     margin: 20px;
-  }
-  .section1 {
-    display: flex;
-    padding: 50px;
-    text-align: left;
-  }
-  
-  .section1 p {
-    flex: 1;
-  }
-  
-  .section1 svg {
-    border: 1px solid red;
-    flex: 2;
-    height: 30px;
-    width: 45px;
-    margin: 20px;
-  }
-  .d1 {
-    border: 1px solid rgb(0, 17, 255);
-    flex: 2;
-    height: 100px;
-    width: 285px;
-    margin: 20px;
-  }
-
-  .chart2 {
-    display: flex;
-    justify-content: left;
-  }
-  .chart3 {
-    display: flex;
-    justify-content: center;
-  }
-  .chart4 {
-    display: flex;
-    justify-content: right;
-  }
-
-  #tooltip {
-    background: white;
-    border: 1pm solid black;
-    display: none;
-    position: absolute;
   }
 
   .dropbtn {
@@ -122,5 +95,12 @@ body {
     padding: 5px;
     position: absolute;
   }
+
+  .map {
+    background: transparent;
+    border: red
+  }
+
+  
   
   

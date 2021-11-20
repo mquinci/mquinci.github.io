@@ -6,38 +6,42 @@
     <title>World Happiness Over Time</title>
     <link rel="stylesheet" href="./styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Happy Monkey' rel='stylesheet'>
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
   </head>
   <body>
+
+    <script>
+      data = d3.csv("Data_WorldHappiness.csv", function(error, data) {
+        console.log(data);
+      });
+    </script>
+
+    <style>
+      body {
+        background-image: url('cork-board.png');
+      }
+      </style>
     <div id="banner">
         <h1>How has world happiness changed over time?</h1>
     </div>
       <div class="section">
         <p>Every year, the Sustainable Development Solutions Network publishes a World Happiness Report that examines how “happy” the people living in a given country are. These “happiness scores” are viewed in the context of 6 factors: Logged GDP per capita, Social support, Healthy life expectancy, Freedom to make life choices, Generosity, and Perception of corruption. This project will focus no happiness trends from 2015-2020 through the lens of social support, healthy life expectancy, and freedom to make life choices. 
-          <br><br>How can this information inform how we evaluate happiness in our lives?</p>
-        <svg id="map"></svg>
+          <br><br>How can this information inform how we evaluate happiness in our lives?
+        </p>
+        <div>
+          <div class="row">
+            <button class="column button4" id="button1" onclick="myFunction()">Happiness Score</button>
+            <button class="column button4" id="button2" onclick="myFunction()">Healthy Life <br />Expectancy</button>
+          </div>
+          <div class="row">
+            <button class="column button4" id="button3" onclick="myFunction()">Social Support</button>
+            <button class="column button4" id="button4" onclick="myFunction()"></button>
+          </div>
+        </div>
       </div>
-      <div class="d1">
-        <svg id="d1">
-          <rect width="285px" height="100px"/>
-        </svg>
-      </div>
-      <div class="d1">
-        <svg id="d1">
-          <rect width="285px" height="100px" />
-        </svg>
-      </div>
-      <div class="d1">
-        <svg id="d1">
-          <rect width="285px" height="100px" />
-        </svg>
-      </div>
-      <div class="d1">
-        <svg id="d1">
-          <rect width="285px" height="100px" />
-        </svg>
-      </div>
-      <div class="section">
-        <svg id="chart1"></svg>
+      <div class = "section">
+        <svg class = "section"></svg>
       </div>
       <div class="section1">
         <div class="dropdown">
@@ -50,24 +54,15 @@
             <a href="#">2019</a>
             <a href="#">2020</a>
           </div>
+          <script src="button5.js" type="text/javascript"></script>
         </div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem lacus, molestie sit amet massa sit amet, posuere egestas tellus. Maecenas et nulla eget sapien fermentum pharetra. Nam nec ipsum quis nisi aliquet convallis. Vestibulum quis sagittis nisi. Fusce pulvinar efficitur elementum.</p>
       </div>
-      <div class = "chart2">
-        <svg class = "chart2">
-          <rect width="300px" height="300px"/>
-        </svg>
+      <div class = "section">
+        <svg class = "section"></svg>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut enim sit amet turpis elementum tristique at in mauris. Etiam egestas nulla vel leo dictum eleifend. Aenean ac gravida leo. Phasellus sed justo rutrum, iaculis orci vel, fringilla nisi. Pellentesque vestibulum aliquam odio, sed suscipit metus aliquet rutrum. Nam pharetra et nibh a semper. Phasellus a eleifend magna. Nulla vel sapien vulputate, finibus justo ac, convallis odio. Nulla et augue arcu. Duis porta augue laoreet lacus dictum, eu hendrerit sem tempor. Integer condimentum, enim sit amet sollicitudin pretium, ligula leo convallis nibh, eget aliquam ex orci vitae quam. Morbi maximus.</p>
       </div>
-      <div class = "chart3">
-        <svg class = "chart3">
-          <rect width="300px" height="300px"/>
-        </svg>
-      </div>
-      <div class = "chart4">
-        <svg class = "chart4">
-          <rect width="300px" height="300px"/>
-        </svg>
-      </div>
+
 
       <div id="tooltip">
         <h2 id="title"></h2>
@@ -75,7 +70,11 @@
       </div>
 
       <script src="./banner.js"></script>
-      <script src="./chart1.js"></script>
+      <script src="./map.js"></script>
+      <script src="./button1.js"></script>
+      <script src="./button2.js"></script>
+      <script src="./button3.js"></script>
+      <script src="./button4.js"></script>
 
   </body>
 </html>

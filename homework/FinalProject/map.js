@@ -1,4 +1,4 @@
-d3.select("#chart1")
+d3.select("#map")
   .on("mousemove", function() {
 
     console.log(d3.event);
@@ -16,7 +16,7 @@ d3.select("#chart1")
 
   })
   
-  d3.select("#chart1")
+  d3.select("#map")
   .on("mousemove", function() {
     d3.select("#tooltip")
       .style("display", "block")
