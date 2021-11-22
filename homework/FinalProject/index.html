@@ -3,25 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
     <title>World Happiness Over Time</title>
     <link rel="stylesheet" href="./styles.css" />
     <link href='https://fonts.googleapis.com/css?family=Happy Monkey' rel='stylesheet'>
     <link rel="stylesheet/less" type="text/css" href="styles.less" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
   </head>
-  <body>
+  <body style="background-color:rgb(241, 206, 129);">
 
     <script>
       data = d3.csv("Data_WorldHappiness.csv", function(error, data) {
         console.log(data);
       });
     </script>
-
-    <style>
-      body {
-        background-image: url('cork-board.png');
-      }
-      </style>
     <div id="banner">
         <h1>How has world happiness changed over time?</h1>
     </div>
@@ -40,8 +35,67 @@
           </div>
         </div>
       </div>
-      <div class = "section">
-        <svg class = "section"></svg>
+      <div>
+        <svg height="1000px" width="1500px" id="viz">
+          <rect id="ocean" x="0" y="0" fill="cornflowerblue" />
+          <g id="map"></g>
+        </svg>
+    
+        <script>
+    
+          var width = 1200;
+          var height = 700;
+    
+          var svg = d3.select("#viz")
+            .attr("width", width)
+            .attr("height", height);
+    
+          d3.select("#ocean")
+            .attr("width", width)
+            .attr("height", height);
+    
+          var map = svg.select("#map");
+    
+          d3.json("world-alpha2.json", function(error, world) {
+    
+            console.log(world);
+            var geoJSON = topojson.feature(world, world.objects.countries);
+            console.log(geoJSON);
+    
+            geoJSON.features = geoJSON.features.filter(function(d) {
+              return d.id !== "AQ";
+            });
+    
+            var proj = d3.geoMercator()
+              .fitSize([width, height], geoJSON);
+    
+            var path = d3.geoPath()
+              .projection(proj);
+    
+            var countries = map.selectAll("path")
+              .data(geoJSON.features);
+    
+            countries.enter().append("path")
+              .attr("d", path)
+              .attr("fill", "green")
+              .attr("vector-effect", "non-scaling-stroke")
+              .attr("stroke", "cornflowerblue")
+              .attr("stroke-width", "0.5px");
+    
+            var zoom = d3.zoom()
+              .translateExtent([[0, 0], [width, height]])
+              .scaleExtent([1, 16])
+              .on("zoom", zoomed);
+    
+            function zoomed() {
+              map.attr("transform", d3.event.transform);
+            }
+    
+            svg.call(zoom);
+    
+          });
+    
+        </script>
       </div>
       <div class="section1">
         <div class="dropdown">

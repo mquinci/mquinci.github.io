@@ -14,7 +14,6 @@ body {
   }
 
   body {
-    font-family: "Happy Monkey";
     margin: 0;
     text-align: center;
   }
@@ -30,7 +29,7 @@ body {
   .button4 {
     padding: 60px 40px;
     border-radius: 8px;
-    background-color: #f3db53;
+    background-color:rgb(245, 238, 180);
     margin: 20px;
     }
     
