@@ -12,11 +12,7 @@
   </head>
   <body style="background-color:rgb(241, 206, 129);">
 
-    <script>
-      data = d3.csv("Data_WorldHappiness.csv", function(error, data) {
-        console.log(data);
-      });
-    </script>
+
     <div id="banner">
         <h1>How has world happiness changed over time?</h1>
     </div>
@@ -40,62 +36,6 @@
           <rect id="ocean" x="0" y="0" fill="cornflowerblue" />
           <g id="map"></g>
         </svg>
-    
-        <script>
-    
-          var width = 1200;
-          var height = 700;
-    
-          var svg = d3.select("#viz")
-            .attr("width", width)
-            .attr("height", height);
-    
-          d3.select("#ocean")
-            .attr("width", width)
-            .attr("height", height);
-    
-          var map = svg.select("#map");
-    
-          d3.json("world-alpha2.json", function(error, world) {
-    
-            console.log(world);
-            var geoJSON = topojson.feature(world, world.objects.countries);
-            console.log(geoJSON);
-    
-            geoJSON.features = geoJSON.features.filter(function(d) {
-              return d.id !== "AQ";
-            });
-    
-            var proj = d3.geoMercator()
-              .fitSize([width, height], geoJSON);
-    
-            var path = d3.geoPath()
-              .projection(proj);
-    
-            var countries = map.selectAll("path")
-              .data(geoJSON.features);
-    
-            countries.enter().append("path")
-              .attr("d", path)
-              .attr("fill", "green")
-              .attr("vector-effect", "non-scaling-stroke")
-              .attr("stroke", "cornflowerblue")
-              .attr("stroke-width", "0.5px");
-    
-            var zoom = d3.zoom()
-              .translateExtent([[0, 0], [width, height]])
-              .scaleExtent([1, 16])
-              .on("zoom", zoomed);
-    
-            function zoomed() {
-              map.attr("transform", d3.event.transform);
-            }
-    
-            svg.call(zoom);
-    
-          });
-    
-        </script>
       </div>
       <div class="section1">
         <div class="dropdown">
@@ -129,6 +69,47 @@
       <script src="./button2.js"></script>
       <script src="./button3.js"></script>
       <script src="./button4.js"></script>
+      
+    
+      <script>
+    
+        var width = 1200;
+        var height = 700;
+  
+        var svg = d3.select("#viz")
+          .attr("width", width)
+          .attr("height", height);
+  
+        d3.select("#ocean")
+          .attr("width", width)
+          .attr("height", height);
+  
+        var map = svg.select("#map");
+
+        d3.queue()
+          .defer(d3.json, "world-alpha2.json")
+          .defer(d3.csv, "Data_WorldHappiness.csv")
+          .awaitAll(function(error, response) {
+            var world = response[0];
+            var data = response[1];
+
+            console.log(data);
+            data.forEach(function(d) {
+              d["Generosity"] = parseFloat(d["Generosity"]);
+              d["year"] = parseFloat(d["year"]);
+            });
+
+            var currentYear = 2019;
+
+            var currentData = data.filter(function(d) {
+              return d.year === currentYear;
+            })
+
+            drawMap(world, currentData, "Generosity");
+
+          });
+  
+      </script>
 
   </body>
 </html>
