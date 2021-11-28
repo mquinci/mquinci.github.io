@@ -1,0 +1,63 @@
+countries.merge(enterCountries)
+    .attr("fill", function(d) {
+      var countryName = countryList[d.id];
+      if (countryName) {
+        var dataPoint = data.filter(function(a) {
+          return a["Country name"] === countryName
+        });
+
+        if (dataPoint.length) {
+          dataPoint = dataPoint[0];
+          console.log("Found one!", dataPoint);
+          return "green";
+        }
+        else {
+          console.log("Missing Data", countryName);
+          return "red";
+        }
+
+      }
+      else {
+        return "gray";
+      }
+      
+    });
+
+
+
+  var maximumLatter = d3.max(data, function(d) {
+      return d.Life_Ladder;
+    });
+
+  var barColor = d3.scaleLinear()
+    .domain([0, maximumLatter])
+    .range(["yellow", "purple"]);
+  
+  countries.merge(enterCountries)
+  .attr("fill", function(d) {
+    var countryName = countryList[d.id];
+    if (countryName) {
+      var dataPoint = data.filter(function(a) {
+        return a["Country name"] === countryName
+    });
+  .attr("fill", function(d) {
+      return barColor(d.Life_Ladder);
+    })
+  
+
+  countries.merge(enterCountries)
+    .attr("fill", function(d) {
+      var countryName = countryList[d.id];
+      if (countryName) {
+        var dataPoint = data.filter(function(a) {
+          return a["Country name"] === countryName
+        })
+      .style("fill", function(d) {
+          return color(rateById[d.LifeLadder]);
+
+    });
+
+    countries.merge(enterCountries)
+    .attr("fill", function(d) {
+      return barColor(d.Life_Ladder);
+    })
