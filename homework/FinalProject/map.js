@@ -268,18 +268,76 @@ function drawMap(world, data, variable) {
   var enterCountries = countries.enter().append("path")
     .attr("d", path)
     .attr("vector-effect", "non-scaling-stroke")
-    .attr("stroke", "cornflowerblue")
+    .attr("stroke", "#D8E4FA")
     .attr("stroke-width", "0.5px");
 
     var maximumLatter = d3.max(data, function(d) {
       return d.Life_Ladder;
     });
+
+    var interpolators = [
+      "Viridis",
+      "Inferno",
+      "Magma",
+      "Plasma",
+      "Warm",
+      "Cool",
+      "Rainbow",
+      "CubehelixDefault",
+      "Blues",
+      "Greens",
+      "Greys",
+      "Oranges",
+      "Purples",
+      "Reds",
+      "BuGn",
+      "BuPu",
+      "GnBu",
+      "OrRd",
+      "PuBuGn",
+      "PuBu",
+      "PuRd",
+      "RdPu",
+      "YlGnBu",
+      "YlGn",
+      "YlOrBr",
+      "YlOrRd"
+    ];
   
-    var Color = d3.scaleLinear()
-      .domain([0, maximumLatter])
-      .range(["yellow", "purple"]);
+  
+    var colorGradient = d3.scaleSequential(d3.interpolateInferno)
+    .domain([0, maximumLatter]);
 
   countries.merge(enterCountries)
+    .attr("id", function(d) {
+      return d.id;
+    })
+    .on("mousemove", function(d) {
+
+      var countryName = countryList[d.id];
+      if (countryName) {
+        var dataPoint = data.filter(function(a) {
+          return a["Country name"] === countryName
+        });
+
+        if (dataPoint.length) {
+          dataPoint = dataPoint[0];
+          
+
+         d3.select("#tooltip")
+          .style("display", "block")
+          .style("top", d3.event.pageY + 20 + "px")
+          .style("left", d3.event.pageX + 20 + "px")
+          .html("Country:  " + countryName + "<br/>" + "Happiness Score:  " + dataPoint.Life_Ladder);
+        }
+      } 
+    })
+
+    .on("mouseout", function(d) {
+      d3.select("#tooltip")
+        .style("display", "none");
+    })
+    
     .attr("fill", function(d) {
       var countryName = countryList[d.id];
       if (countryName) {
@@ -289,22 +347,26 @@ function drawMap(world, data, variable) {
 
         if (dataPoint.length) {
           dataPoint = dataPoint[0];
-          console.log("Found one!", dataPoint);
-          return "Color(d.Life_Ladder)";
+          return colorGradient(dataPoint.Life_Ladder);
         }
-        else {
-          console.log("Missing Data", countryName);
-          return "red";
-        }
+        //else {
+          //console.log("Missing Data", countryName);
+          //return "red";
+        //}
 
       }
       else {
+        console.log("Missing Name", d.id)
         return "gray";
+
       }
       
     });
 
+    
   console.log(data);
+
+  
 
 
 
@@ -312,7 +374,7 @@ function drawMap(world, data, variable) {
 
   var zoom = d3.zoom()
     .translateExtent([[0, 0], [width, height]])
-    .scaleExtent([1, 16])
+    .scaleExtent([1, 4])
     .on("zoom", zoomed);
 
   function zoomed() {
@@ -323,33 +385,10 @@ function drawMap(world, data, variable) {
 
 }
 
-d3.select("#map")
-  .on("mousemove", function() {
-
-    console.log(d3.event);
-
-    
-    var tooltop = d3.select("#tooltip")
-      .style("display", "block")
-      .style("top", d3.event.pageY + 20 + "px")
-      .style("left", d3.event.pageX + 20 + "px")
-      .html("Welcome to the first chart!");
-
-      tooltip.select("#title").html("Tooltip Title")
-      tooltip.select("#LikeLadder").html("$2K")
+//tooltip.select("#title").html(countryName)
+//tooltip.select("#LifeLadder").html(dataPoint.Life_Ladder)
 
 
-  })
-  
-  d3.select("#map")
-  .on("mousemove", function() {
-    d3.select("#tooltip")
-      .style("display", "block")
-      .style("top", d3.event.pageY + 20 + "px")
-      .style("left", d3.event.pageX + 20 + "px")
-      .html("Welcome to the first chart!");
-  })
-  .on("mouseout", function() {
-    d3.select("#tooltip")
-      .style("display", "none");
-  });;
+
+
+ 
