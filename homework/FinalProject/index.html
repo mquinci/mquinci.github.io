@@ -19,8 +19,7 @@
     <div>
       <div class="section">
         <div id="border">
-        <p>Every year, the Sustainable Development Solutions Network publishes a World Happiness Report that examines how “happy” the people living in a given country are. These “happiness scores” are viewed in the context of 6 factors: Logged GDP per capita, Social support, Healthy life expectancy, Freedom to make life choices, Generosity, and Perception of corruption. This project will focus no happiness trends from 2015-2020 through the lens of social support, healthy life expectancy, and freedom to make life choices. 
-          <br><br>How can this information inform how we evaluate happiness in our lives?
+        <p>Every year, the Sustainable Development Solutions Network publishes a World Happiness Report that examines how "happy" the people living in a given country are. These Happiness Scores are viewed in the context of 6 factors: Logged GDP per Capita, Social Support, Healthy Life Expectancy, Freedom to Make Life Choices, Generosity, and Perception of Corruption. This project will focus on happiness trends from 2015-2020 through the lens of Social Support, Healthy Life Expectancy, and Freedom to Make Life Choices. 
         </p>
       </div>
         <img src="Symbols-of-Happiness-Sunflower.jpg" alt="Smiley Face" height="342px" width="512px">
@@ -44,10 +43,11 @@
           <g id="map"></g>
         </svg>
       </div>
+      <div class="row">
       <div>
-      <div>
-     <div class="section1">
-      <div class="dropdown">
+     <div>
+       <div>
+      <div class="dropdown" style = left:200px>
           <button class="dropbtn">Select a year</button>
           <div class="dropdown-content">
             <div class="dropdown-button">2015</div>
@@ -57,7 +57,13 @@
             <div class="dropdown-button">2019</div>
             <div class="dropdown-button">2020</div>
           </div>
-          <svg id = legend height="25px" width="1000px">
+          <div class=endtext>
+            <p>Select a year from the dropdown menu to see how world happiness has changed over time. Hover your mouse over each country to see its happiness score for that given year as well as information about how Healthy Life Expectancy, Social Support, and Freedom to Make Life Choices play into happiness!</p>
+          </div>
+        </div>
+          </div>
+          <div class = "colorscale" style = top:-190px>
+          <svg id = legend1 width="200px" height="25px">
             <defs>
               <linearGradient id="colorGradient">
                 <stop offset="0%"   style="stop-color: rgb(0, 0, 4);" />
@@ -74,13 +80,13 @@
               </linearGradient>
             </defs>
             <g>
-              <rect id="map" x="800px" width="200px" height="25px" fill="url(#colorGradient)" stroke="black" />
-              <g id="scaleAxis"></g>
+              <rect id="map" x="800px" width="200px" height="25px" fill="url(#colorGradient)" stroke="black" display=flex />
+              <g id="scaleAxis" display=flex></g>
             </g>
           </svg>
           <script> 
-            var width = 1005, height = 50; 
-            var svg = d3.select("#legend") 
+            var width = 1005, height = 50;   
+            var svg = d3.select("#legend1") 
                 .attr("width", width) 
                 .attr("height", height); 
       
@@ -125,12 +131,23 @@
             //.call(scaleAxis);
   </script>
         </script>
-      </div>
-    </div>
     </div>
   </div>
-  <div class=endtext>
-        <p>Select a year from the dropdown menu to see how world happiness has changed over time. Hover your mouse over each country to see its happiness score for that given year as well as information about how Healthy Life Expectancy, Social Support, and Freedom to Make Life Choices play into happiness!</p>
+</div>
+</div>
+  <div>
+      <div>
+        <div></div>
+        <div id="conclusion" style = "position:relative; top:-30px">
+          <h1 style = "position:relative; top:-120px">How can this information inform how we evaluate happiness in our lives?</h1>
+      </div>
+      <div class = links>
+        <p>Data Retrieved From: https://worldhappiness.report/ed/2021/#appendices-and-data <br/>
+            Definitions and Background: https://happiness-report.s3.amazonaws.com/2020/WHR20_Ch2_Statistical_Appendix.pdf <br/>
+            Images: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fyouth%2Bholding%2Bhands%2Bsunset&psig=AOvVaw3doR-YluUsq1AGpL8Dr1mZ&ust=1638898868770000&source=images&cd=vfe&ved=0CA0Q3YkBahcKEwig57ea3M_0AhUAAAAAHQAAAAAQAw; <br/> https://thehygg.com/symbols-of-happiness-and-what-they-mean/</p>
+      </div>
+    </div>
+      <div class = end>
       </div>
         
 

@@ -10,22 +10,21 @@
     color:black; 
     font-family: "Happy Monkey";
   }
+
   #border {
     border-style:solid;
     border-color:#34ce26;
     border-width: thick;
     background-color:#81c77a;
-    padding: 11vh 11px;
+    padding: 13.97vh 13.97px;
    }
   
-
   body {
     margin: 0;
     text-align: center;
     font-family: "Happy Monkey"
   }
 
-  
   .row {
     display: flex;
   }
@@ -43,8 +42,8 @@
     font-size: 20px;
     }
     
-
   .section {
+    text-align: left;
     align-items: center;
     display: flex;
     padding: 50px;
@@ -55,17 +54,20 @@
   }
 
   .dropbtn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px;
+    border-color:#34ce26;
+    border-width: thick;
+    background-color:#81c77a;
+    padding: 5px;
     font-size: 16px;
-    border: none;
     font-family: "Happy Monkey";
+    text-align: left;
   }
   
   .dropdown {
+    margin: auto;
     position: relative;
     display: inline-block;
+    display: flex;
   }
   
   .dropdown-content {
@@ -77,6 +79,7 @@
     z-index: 1;
     font-size: 16px;
     font-family: "Happy Monkey";
+    text-align: center;
   }
   
   .dropdown-content a {
@@ -104,10 +107,57 @@
     text-align: left;
   }
 
-  .endtext {
-    position:absolute;
+  .colorscale {
+    position: relative;
+    text-align: right;
+    margin: 0;
+    padding: 5vh 5px;
+    display: flex;
+    width: cover;
+    left: 225px;
+  }
+
+  div.endtext {
+    margin: auto;
     text-align: left;
-    padding: 16px;
+    font-size: 14px;
+    padding: 2vh 2px;
+    padding-left: 25px;
+    display: flex;
+    background-size: 20%;
+    width: 800px;
+    border-style:solid;
+    border-color:#34ce26;
+    border-width: thick;
+    background-color:#81c77a;
+  }
+
+  .links {
+    margin: 0;
+    text-align: left;
+    font-size: 5px;
+    border-style:solid;
+    border-color:#c026ce;
+    border-width: thick;
+    background-color:#c76fcf;
+    padding: .5vh .5px;
+    position: relative;
+  }
+
+  #conclusion {
+    background-image: url('conclusion.jpg');
+    height: 55px;
+    background-position: center;
+    padding: 10vh 10px;
+    text-align: center;
+    color:black; 
+    font-family: "Happy Monkey";
+    margin: 0;
+  }
+
+  .end {
+    background-color: coral;
+    height: 10px;
   }
 
   
