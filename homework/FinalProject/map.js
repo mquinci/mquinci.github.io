@@ -115,6 +115,7 @@ var countryList = {
   "KE": "Kenya",
   "KI": "Kiribati",
   "KR": "Korea",
+  "KP": "Korea (the Democratic People's Republic of)",
   "KW": "Kuwait",
   "KG": "Kyrgyzstan",
   "LA": "Lao People\"s Democratic Republic",
@@ -201,6 +202,7 @@ var countryList = {
   "SI": "Slovenia",
   "SB": "Solomon Islands",
   "SO": "Somalia",
+  "SS": "South Sudan",
   "ZA": "South Africa",
   "GS": "South Georgia And Sandwich Isl.",
   "ES": "Spain",
@@ -242,6 +244,7 @@ var countryList = {
   "WF": "Wallis And Futuna",
   "EH": "Western Sahara",
   "YE": "Yemen",
+  "XK": "Kosovo",
   "ZM": "Zambia",
   "ZW": "Zimbabwe"
 };
@@ -276,33 +279,7 @@ function drawMap(world, data, variable) {
     });
 
     var interpolators = [
-      "Viridis",
-      "Inferno",
-      "Magma",
-      "Plasma",
-      "Warm",
-      "Cool",
-      "Rainbow",
-      "CubehelixDefault",
-      "Blues",
-      "Greens",
-      "Greys",
-      "Oranges",
-      "Purples",
-      "Reds",
-      "BuGn",
-      "BuPu",
-      "GnBu",
-      "OrRd",
-      "PuBuGn",
-      "PuBu",
-      "PuRd",
-      "RdPu",
-      "YlGnBu",
-      "YlGn",
-      "YlOrBr",
-      "YlOrRd"
-    ];
+      "Inferno"];
   
   
     var colorGradient = d3.scaleSequential(d3.interpolateInferno)
@@ -328,7 +305,7 @@ function drawMap(world, data, variable) {
           .style("display", "block")
           .style("top", d3.event.pageY + 20 + "px")
           .style("left", d3.event.pageX + 20 + "px")
-          .html("Country:  " + countryName + "<br/>" + "Happiness Score:  " + dataPoint.Life_Ladder);
+          .html("Country:  " + countryName + "<br/>" + "Happiness Score:  " + dataPoint.Life_Ladder + "<br/>" + "Healthy Life Expectancy:  " + dataPoint.Healthy_life_expectancy_at_birth + "<br/>" + "Social Support:  " + dataPoint.Social_support + "<br/>" + "Freedom to Make Life Choices:  " + dataPoint.Freedom_to_make_life_choices);
         }
       } 
     })
@@ -354,13 +331,13 @@ function drawMap(world, data, variable) {
           //return "red";
         //}
 
-      }
+      
       else {
-        console.log("Missing Name", d.id)
+        //console.log("Missing Name", d.id)
         return "gray";
 
       }
-      
+    }
     });
 
     

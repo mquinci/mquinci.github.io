@@ -1,23 +1,31 @@
-body {
-    margin: 0;
-  }
   
   #banner {
-    background-color: #b9b4b4bb;
-    background-image: url('fruehling-f-157514845s-jpg--81698-.jpg');
+    background-image: url('happiness_crop.jpg');
+    height: 300px;
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     padding: 10vh 10px;
     text-align: center;
-    color:black;
+    color:black; 
     font-family: "Happy Monkey";
   }
+  #border {
+    border-style:solid;
+    border-color:#34ce26;
+    border-width: thick;
+    background-color:#81c77a;
+    padding: 11vh 11px;
+   }
+  
 
   body {
     margin: 0;
     text-align: center;
+    font-family: "Happy Monkey"
   }
 
+  
   .row {
     display: flex;
   }
@@ -31,6 +39,8 @@ body {
     border-radius: 8px;
     background-color:rgb(247, 191, 247);
     margin: 20px;
+    font-family: "Happy Monkey";
+    font-size: 20px;
     }
     
 
@@ -43,13 +53,6 @@ body {
   .section p {
     flex: 1;
   }
-  
-  .section svg {
-    border: 1px solid red;
-    flex: 2;
-    height: 300px;
-    margin: 20px;
-  }
 
   .dropbtn {
     background-color: #04AA6D;
@@ -57,6 +60,7 @@ body {
     padding: 16px;
     font-size: 16px;
     border: none;
+    font-family: "Happy Monkey";
   }
   
   .dropdown {
@@ -67,10 +71,12 @@ body {
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: #abb8f3;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    font-size: 16px;
+    font-family: "Happy Monkey";
   }
   
   .dropdown-content a {
@@ -80,7 +86,9 @@ body {
     display: block;
   }
   
-  .dropdown-content a:hover {background-color: #ddd;}
+  .dropdown-content a:hover {
+    background-color: #ddd;
+    }
   
   .dropdown:hover .dropdown-content {display: block;}
   
@@ -93,11 +101,13 @@ body {
     display: none;
     padding: 5px;
     position: absolute;
+    text-align: left;
   }
 
-  .map {
-    background: transparent;
-    border: red
+  .endtext {
+    position:absolute;
+    text-align: left;
+    padding: 16px;
   }
 
   

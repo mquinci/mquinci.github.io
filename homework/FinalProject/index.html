@@ -10,17 +10,22 @@
     <link rel="stylesheet/less" type="text/css" href="styles.less" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
   </head>
-  <body style="background-color:rgb(243, 225, 186);">
+  <body style="background-color:rgb(255, 248, 190);">
 
 
-    <div id="banner">
-        <h1>How has world happiness changed over time?</h1>
+    <div id="banner" style = "position:relative; top:-30px">
+        <h1 style = "position:relative; top:-40px">How has world happiness changed over time?</h1>
     </div>
+    <div>
       <div class="section">
+        <div id="border">
         <p>Every year, the Sustainable Development Solutions Network publishes a World Happiness Report that examines how “happy” the people living in a given country are. These “happiness scores” are viewed in the context of 6 factors: Logged GDP per capita, Social support, Healthy life expectancy, Freedom to make life choices, Generosity, and Perception of corruption. This project will focus no happiness trends from 2015-2020 through the lens of social support, healthy life expectancy, and freedom to make life choices. 
           <br><br>How can this information inform how we evaluate happiness in our lives?
         </p>
       </div>
+        <img src="Symbols-of-Happiness-Sunflower.jpg" alt="Smiley Face" height="342px" width="512px">
+      </div>
+    </div>
         <div>
           <div class="row">
             <button class="column button4" id="button1" onclick="myFunction()">Happiness Score</button>
@@ -55,6 +60,17 @@
           <svg id = legend height="25px" width="1000px">
             <defs>
               <linearGradient id="colorGradient">
+                <stop offset="0%"   style="stop-color: rgb(0, 0, 4);" />
+                <stop offset="10%"  style="stop-color: rgb(22, 11, 57);" />
+                <stop offset="20%"  style="stop-color: rgb(64, 10, 103);" />
+                <stop offset="30%"  style="stop-color: rgb(106, 23, 10);" />
+                <stop offset="40%"  style="stop-color: rgb(146, 39, 104);" />
+                <stop offset="50%"  style="stop-color: rgb(174, 48, 92);" />
+                <stop offset="60%"  style="stop-color: rgb(219, 80, 59);" />
+                <stop offset="70%"  style="stop-color: rgb(242, 116, 28);" />
+                <stop offset="80%"  style="stop-color: rgb(252, 161, 8);" />
+                <stop offset="90%"  style="stop-color: rgb(247, 211, 64);" />
+                <stop offset="100%" style="stop-color: rgb(249, 252, 157);" />
               </linearGradient>
             </defs>
             <g>
@@ -64,8 +80,7 @@
           </svg>
           <script> 
             var width = 1005, height = 50; 
-            var svg = d3.select("body") 
-                .append("svg") 
+            var svg = d3.select("#legend") 
                 .attr("width", width) 
                 .attr("height", height); 
       
@@ -77,12 +92,19 @@
       
             var xAxisTranslate = height / 2; 
       
-            svg.append("g") 
+            svg.select("#scaleAxis")
                 .attr("transform", "translate(800, " 
                 + xAxisTranslate + ")") 
                 .call(scaleAxis) 
 
-                var stopsData = d3.range(0, 8, 1);
+    var interpolators = [
+      "Inferno"
+    ];
+  
+    var colorGradient = d3.scaleSequential(d3.interpolateInferno)
+        .domain([0, 10]);
+
+    var stopsData = d3.range(0, 10, 1);
       
       svg.select("#colorGradient").selectAll("stop")
         .data(stopsData).enter()
@@ -99,15 +121,17 @@
 
       var scaleAxis = d3.axisBottom(scaleX);
 
-      scale.select("#scaleAxis")
-            .call(scaleAxis);
+      //scale.select("#scaleAxis")
+            //.call(scaleAxis);
   </script>
         </script>
       </div>
     </div>
     </div>
   </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sem lacus, molestie sit amet massa sit amet, posuere egestas tellus. Maecenas et nulla eget sapien fermentum pharetra. Nam nec ipsum quis nisi aliquet convallis. Vestibulum quis sagittis nisi. Fusce pulvinar efficitur elementum.</p>
+  <div class=endtext>
+        <p>Select a year from the dropdown menu to see how world happiness has changed over time. Hover your mouse over each country to see its happiness score for that given year as well as information about how Healthy Life Expectancy, Social Support, and Freedom to Make Life Choices play into happiness!</p>
+      </div>
         
 
 
