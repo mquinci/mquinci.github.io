@@ -1,3 +1,4 @@
+//list countries and their two-digit country codes
 var countryList = {
   "AF": "Afghanistan",
   "AX": "Aland Islands",
@@ -249,6 +250,7 @@ var countryList = {
   "ZW": "Zimbabwe"
 };
 
+//draw the map, color countries in based on life ladder, tooltip 
 function drawMap(world, data, variable) {
     
   console.log(world);
@@ -280,8 +282,7 @@ function drawMap(world, data, variable) {
 
     var interpolators = [
       "Inferno"];
-  
-  
+
     var colorGradient = d3.scaleSequential(d3.interpolateInferno)
     .domain([0, maximumLatter]);
 
@@ -330,8 +331,6 @@ function drawMap(world, data, variable) {
           //console.log("Missing Data", countryName);
           //return "red";
         //}
-
-      
       else {
         //console.log("Missing Name", d.id)
         return "gray";
@@ -339,16 +338,11 @@ function drawMap(world, data, variable) {
       }
     }
     });
-
-    
-  console.log(data);
+  
+    console.log(data);
 
   
-
-
-
-
-
+//zoom features 
   var zoom = d3.zoom()
     .translateExtent([[0, 0], [width, height]])
     .scaleExtent([1, 4])
@@ -361,9 +355,6 @@ function drawMap(world, data, variable) {
   svg.call(zoom);
 
 }
-
-//tooltip.select("#title").html(countryName)
-//tooltip.select("#LifeLadder").html(dataPoint.Life_Ladder)
 
 
 

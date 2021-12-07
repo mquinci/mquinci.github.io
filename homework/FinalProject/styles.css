@@ -93,9 +93,13 @@
     background-color: #ddd;
     }
   
-  .dropdown:hover .dropdown-content {display: block;}
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
   
-  .dropdown:hover .dropbtn {background-color: #2d6eb8;}
+  .dropdown:hover .dropbtn {
+    background-color: #2d6eb8;
+  }
 
   #tooltip {
     background: white;
