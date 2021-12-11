@@ -12,9 +12,9 @@
   </head>
   <body style="background-color:rgb(255, 248, 190);">
 
-
-    <div id="banner" style = "position:relative; top:-30px">
-        <h1 style = "position:relative; top:-40px">How has world happiness changed over time?</h1>
+    <div class = "maxwidth">
+    <div id="banner">
+        <h1 id = "bannertext">How has world happiness changed over time?</h1>
     </div>
     <div>
       <div class="section">
@@ -62,8 +62,8 @@
           </div>
         </div>
           </div>
-          <div class = "colorscale" style = top:-190px>
-          <svg id = legend1 width="200px" height="25px">
+          <div class = "colorscale">
+          <svg id = legend1 width="200px" height="300px">
             <defs>
               <linearGradient id="colorGradient">
                 <stop offset="0%"   style="stop-color: rgb(0, 0, 4);" />
@@ -149,6 +149,7 @@
     </div>
       <div class = end>
       </div>
+    </div>
         
       
       <div id="tooltip">
@@ -194,6 +195,8 @@
               d["Social_support"] = parseFloat(d["Social_support"]);
               d["Healthy_life_expectancy_at_birth"] = parseFloat(d["Healthy_life_expectancy_at_birth"]);
               d["Freedom_to_make_life_choices"] = parseFloat(d["Freedom_to_make_life_choices"]);
+              d["Social_support_per"] = parseFloat(d["Social_support_per"]);
+              d["Freedom_to_make_life_choices_per"] = parseFloat(d["Freedom_to_make_life_choices_per"]);
             });
 
             var currentYear = d3.max(data, function(d) {

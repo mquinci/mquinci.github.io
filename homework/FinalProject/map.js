@@ -306,7 +306,7 @@ function drawMap(world, data, variable) {
           .style("display", "block")
           .style("top", d3.event.pageY + 20 + "px")
           .style("left", d3.event.pageX + 20 + "px")
-          .html("Country:  " + countryName + "<br/>" +"Year:  " + dataPoint.year + "<br/>" + "Happiness Score:  " + dataPoint.Life_Ladder + "<br/>" + "Healthy Life Expectancy:  " + dataPoint.Healthy_life_expectancy_at_birth + "<br/>" + "Social Support:  " + dataPoint.Social_support + "<br/>" + "Freedom to Make Life Choices:  " + dataPoint.Freedom_to_make_life_choices);
+          .html("Country:  " + countryName + "<br/>" +"Year:  " + dataPoint.year + "<br/>" + "Happiness Score:  " + dataPoint.Life_Ladder + "<br/>" + "Healthy Life Expectancy:  " + dataPoint.Healthy_life_expectancy_at_birth + " years old" + "<br/>" + "Social Support:  " + dataPoint.Social_support_per + "%" + "<br/>" + "Freedom to Make Life Choices:  " + dataPoint.Freedom_to_make_life_choices_per + "%");
         }
       } 
     })
@@ -333,7 +333,7 @@ function drawMap(world, data, variable) {
         //}
       else {
         //console.log("Missing Name", d.id)
-        return "gray";
+        return "lightgray";
 
       }
     }

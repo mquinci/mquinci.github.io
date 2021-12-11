@@ -1,14 +1,26 @@
   
-  #banner {
+ .maxwidth {
+   max-width: 1900px;
+ }
+ 
+ #banner {
     background-image: url('happiness_crop.jpg');
     height: 300px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 10vh 10px;
+  }
+
+  #bannertext {
+    padding: 5vh 5px;
     text-align: center;
     color:black; 
     font-family: "Happy Monkey";
+    position: relative;
+    top: -15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   #border {
@@ -118,7 +130,8 @@
     padding: 5vh 5px;
     display: flex;
     width: cover;
-    left: 225px;
+    left: 20%;
+    top: -190px;
   }
 
   div.endtext {
