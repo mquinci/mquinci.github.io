@@ -168,6 +168,9 @@
       <script>
     
         var width = 1200;
+          if (window.innerWidth < 1200) {
+          width = window.innerWidth;
+          }
         var height = 700;
   
         var svg = d3.select("#viz")
