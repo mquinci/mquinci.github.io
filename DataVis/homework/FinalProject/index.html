@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <title>World Happiness Over Time</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link href='https://fonts.googleapis.com/css?family=Happy Monkey' rel='stylesheet'>
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
+  </head>
+  <body style="background-color:rgb(255, 248, 190);">
+
+    <div class = "maxwidth">
+    <div id="banner">
+        <h1 id = "bannertext">How has world happiness changed over time?</h1>
+    </div>
+    <div>
+      <div class="section">
+        <div id="border">
+        <p>Every year, the Sustainable Development Solutions Network publishes a World Happiness Report that examines how "happy" the people living in a given country are. These Happiness Scores are viewed in the context of 6 factors: Logged GDP per Capita, Social Support, Healthy Life Expectancy, Freedom to Make Life Choices, Generosity, and Perception of Corruption. This project will focus on happiness trends from 2015-2020 through the lens of Social Support, Healthy Life Expectancy, and Freedom to Make Life Choices. 
+        </p>
+      </div>
+        <img src="Symbols-of-Happiness-Sunflower.jpg" alt="Smiley Face" height="342px" width="512px">
+      </div>
+    </div>
+        <div>
+          <div class="row">
+            <button class="column button4" id="button1" onclick="myFunction()">Happiness Score</button>
+            <button class="column button4" id="button2" onclick="myFunction()">Healthy Life Expectancy</button>
+          </div>
+          <div class="row">
+            <button class="column button4" id="button3" onclick="myFunction()">Social Support</button>
+            <button class="column button4" id="button4" onclick="myFunction()">Freedom to Make Life Choices</button>
+          </div>
+        </div>
+      <div>
+        <svg height="700px" width="1000px" id="viz">
+          <defs>
+          </defs>
+          <rect id="ocean" x="0" y="0" fill="#D8E4FA" />
+          <g id="map"></g>
+        </svg>
+      </div>
+      <div class="row">
+      <div>
+     <div>
+      <div>
+      <div class="dropdown" style = left:200px>
+          <button class="dropbtn">Select a year</button>
+          <div class="dropdown-content">
+            <div class="dropdown-button">2015</div>
+            <div class="dropdown-button">2016</div>
+            <div class="dropdown-button">2017</div>
+            <div class="dropdown-button">2018</div>
+            <div class="dropdown-button">2019</div>
+            <div class="dropdown-button">2020</div>
+          </div>
+          <div class=endtext>
+            <p>Select a year from the dropdown menu to see how world happiness has changed over time. Hover your mouse over each country to see its happiness score for that given year as well as information about how Healthy Life Expectancy, Social Support, and Freedom to Make Life Choices play into happiness!</p>
+          </div>
+        </div>
+          </div>
+          <div class = "colorscale">
+          <svg id = legend1 width="200px" height="300px">
+            <defs>
+              <linearGradient id="colorGradient">
+                <stop offset="0%"   style="stop-color: rgb(0, 0, 4);" />
+                <stop offset="10%"  style="stop-color: rgb(22, 11, 57);" />
+                <stop offset="20%"  style="stop-color: rgb(64, 10, 103);" />
+                <stop offset="30%"  style="stop-color: rgb(106, 23, 10);" />
+                <stop offset="40%"  style="stop-color: rgb(146, 39, 104);" />
+                <stop offset="50%"  style="stop-color: rgb(174, 48, 92);" />
+                <stop offset="60%"  style="stop-color: rgb(219, 80, 59);" />
+                <stop offset="70%"  style="stop-color: rgb(242, 116, 28);" />
+                <stop offset="80%"  style="stop-color: rgb(252, 161, 8);" />
+                <stop offset="90%"  style="stop-color: rgb(247, 211, 64);" />
+                <stop offset="100%" style="stop-color: rgb(249, 252, 157);" />
+              </linearGradient>
+            </defs>
+            <g>
+              <rect id="map" x="800px" width="200px" height="25px" fill="url(#colorGradient)" stroke="black" display=flex />
+              <g id="scaleAxis" display=flex></g>
+            </g>
+          </svg>
+          <script> 
+            var width = 1005, height = 50;   
+            var svg = d3.select("#legend1") 
+                .attr("width", width) 
+                .attr("height", height); 
+      
+            var xscale = d3.scaleLinear() 
+                .domain([0, 10]) 
+                .range([0, width - 810]); 
+      
+            var scaleAxis = d3.axisBottom().scale(xscale); 
+      
+            var xAxisTranslate = height / 2; 
+      
+            svg.select("#scaleAxis")
+                .attr("transform", "translate(800, " 
+                + xAxisTranslate + ")") 
+                .call(scaleAxis) 
+
+          var interpolators = [
+            "Inferno"
+              ];
+        
+          var colorGradient = d3.scaleSequential(d3.interpolateInferno)
+              .domain([0, 10]);
+
+          var stopsData = d3.range(0, 10, 1);
+            
+          svg.select("#colorGradient").selectAll("stop")
+            .data(stopsData).enter()
+            .append("stop")
+              .attr("offset", function(d) {
+                return d * 100 + "%";
+              })
+              .attr("stop-color", function(d) {
+                return colorGradient(d * 8);
+              });
+
+          var scaleX = d3.scaleLinear()
+              .domain([0, 8]);
+
+          var scaleAxis = d3.axisBottom(scaleX);
+
+          //scale.select("#scaleAxis")
+              //.call(scaleAxis);
+  </script>
+        </script>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div>
+      <div>
+        <div></div>
+        <div id="conclusion" style = "position:relative; top:-30px">
+          <h1 style = "position:relative; top:-120px">How can this information inform how we evaluate happiness in our lives?</h1>
+      </div>
+      <div class = links>
+        <p>Data Retrieved From: https://worldhappiness.report/ed/2021/#appendices-and-data <br/>
+            Definitions and Background: https://happiness-report.s3.amazonaws.com/2020/WHR20_Ch2_Statistical_Appendix.pdf <br/>
+            Images: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fyouth%2Bholding%2Bhands%2Bsunset&psig=AOvVaw3doR-YluUsq1AGpL8Dr1mZ&ust=1638898868770000&source=images&cd=vfe&ved=0CA0Q3YkBahcKEwig57ea3M_0AhUAAAAAHQAAAAAQAw; <br/> https://thehygg.com/symbols-of-happiness-and-what-they-mean/</p>
+      </div>
+    </div>
+      <div class = end>
+      </div>
+    </div>
+        
+      
+      <div id="tooltip">
+        <h2 id="title"></h2>
+        Value: <span id="LifeLadder"></span>
+      </div>
+
+      <script src="./banner.js"></script>
+      <script src="./map.js"></script>
+      <script src="./button1.js"></script>
+      <script src="./button2.js"></script>
+      <script src="./button3.js"></script>
+      <script src="./button4.js"></script>
+      
+    
+      <script>
+    
+        var width = 1200;
+          if (window.innerWidth < 1200) {
+          width = window.innerWidth;
+          }
+        var height = 700;
+  
+        var svg = d3.select("#viz")
+          .attr("width", width)
+          .attr("height", height);
+  
+        d3.select("#ocean")
+          .attr("width", width)
+          .attr("height", height);
+  
+        var map = svg.select("#map");
+
+        d3.queue()
+          .defer(d3.json, "world-alpha2.json")
+          .defer(d3.csv, "Data_WorldHappiness.csv")
+          .awaitAll(function(error, response) {
+            var world = response[0];
+            var data = response[1];
+
+            console.log(data);
+            data.forEach(function(d) {
+              d["Generosity"] = parseFloat(d["Generosity"]);
+              d["year"] = parseFloat(d["year"]);
+              d["Life_Ladder"] = parseFloat(d["Life_Ladder"]);
+              d["Social_support"] = parseFloat(d["Social_support"]);
+              d["Healthy_life_expectancy_at_birth"] = parseFloat(d["Healthy_life_expectancy_at_birth"]);
+              d["Freedom_to_make_life_choices"] = parseFloat(d["Freedom_to_make_life_choices"]);
+              d["Social_support_per"] = parseFloat(d["Social_support_per"]);
+              d["Freedom_to_make_life_choices_per"] = parseFloat(d["Freedom_to_make_life_choices_per"]);
+            });
+
+            var currentYear = d3.max(data, function(d) {
+              return d.year;
+            });
+
+            function update(selectedYear) {
+
+              var currentData = data.filter(function(d) {
+                return d.year === selectedYear;
+              });
+
+              drawMap(world, currentData, "Generosity");
+            }
+
+            update(currentYear);
+
+            d3.selectAll(".dropdown-button")
+              .on("click", function() {
+                var year = parseFloat(this.innerText);
+                update(year);
+              });
+
+          });
+  
+      </script>
+
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Homework</title>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+
+        <style>
+            .funkText {
+                font-family: "Garamond";
+                font-size: 25px;
+                font-style: italic;
+                font-weight: bold;
+            }
+
+        </style>
+    </head>
+    
+    <body>
+        <!-- Create a title -->
+        <center><h1 id="title">Click on your favorite orchestra below to see which principal musicians earn the highest salaries.</h1></center>
+
+        
+        <!-- Create svg -->
+        <svg id="rectangle-viz" height="450px" width="1000px">
+        </svg>
+
+            <br/>
+
+        <!-- Draw buttons     -->
+        <center><button onclick="drawRectangle(data1)"> London Symphony Orchestra</button>
+        <button onclick="drawRectangle(data2)"> Boston Symphony Orchestra</button>
+        <button onclick="drawRectangle(data3)"> Chicago Symphony Orchestra</button></center>
+
+        <script>
+         //Create data1, data2, and data3   
+            var data1 = [
+                {
+                instrument:"cello",
+                value: 100000
+                },
+                    {
+                instrument:"french horn",
+                value: 200000
+                },
+                {
+                instrument:"bass",
+                value: 300000
+                },
+                {
+                instrument:"viola",
+                value: 150000
+                },
+                {
+                instrument:"oboe",
+                value: 275000
+                },
+                ];
+
+                //data1 = data1.slice().sort((a, b) => d3.descending(a.value, b.value))
+
+                var data2 = [
+                {
+                instrument:"cello",
+                value: 450000
+                },
+                    {
+                instrument:"english horn",
+                value: 400000
+                },
+                {
+                instrument:"bass",
+                value: 140000
+                },
+                {
+                instrument:"viola",
+                value: 666000
+                },
+                {
+                instrument:"percussion",
+                value: 345000
+                }
+                ];
+
+                //data2 = data2.slice().sort((a, b) => d3.descending(a.value, b.value))
+
+                var data3 = [
+                {
+                instrument:"cello",
+                value: 24000
+                },
+                    {
+                instrument:"violin",
+                value: 40000
+                },
+                {
+                instrument:"trombone",
+                value: 17000
+                },
+                {
+                instrument:"oboe",
+                value: 24000
+                },
+                {
+                instrument:"percussion",
+                value: 65000
+                }
+                ];
+
+                //data3 = data3.slice().sort((a, b) => d3.descending(a.value, b.value))
+
+               
+        //Create a function that changes the rectangle positions randomly        
+        function rectanglePosition() {
+            return Math.random() * 700 + 10;
+            }
+        //Create a function that draws rectangles
+        function drawRectangle(dataArray) {
+            var rectangles = d3.select("#rectangle-viz").selectAll("rect")
+                .attr("align","center")
+                .data(dataArray, function(d) {
+                    return d.instrument;
+                });
+
+        
+        //Fill the rectangles and change the positions
+            rectangles.enter().append("rect")
+            .attr("fill", function(d) {
+                if(d.instrument == "cello") {
+                    return "rgb(153, 107, 195)";
+                }
+                else if (d.instrument == "french horn") {
+                    return "rgb(56, 106, 197)";
+                }
+                else if (d.instrument == "bass") {
+                    return "rgb(93, 199, 76)";
+                }
+                else if (d.instrument == "viola") {
+                    return "rgb(223, 199, 31)";
+                }
+                else if (d.instrument == "oboe") {
+                    return "rgb(234, 118, 47)";
+                }
+                else if (d.instrument == "english horn") {
+                    return "yellow";
+                }
+                else if (d.instrument == "percussion") {
+                    return "rgb(255,182,193)";
+                }
+                else if (d.instrument == "trombone") {
+                    return "gray";
+                }
+                else if (d.instrument == "violin") {
+                    return "black";
+                }
+            })
+            .attr("id", function(d){
+                return d.instrument;
+            })
+            .attr("x", rectanglePosition)
+            .attr("y", function(d, i) {
+                return i * 100})
+            .attr("height", 50)
+            .attr("width", 50)
+            .transition().duration(1000);
+
+
+            
+
+            
+
+            //Updating rectangles as the data changes   
+            rectangles
+            .transition().duration(1000)
+            .attr("x", rectanglePosition);
+
+            //Exit rectangles that are no longer applicable    
+            rectangles.exit()
+            .transition().duration(1000)
+            .remove();
+            }
+
+            //Creating variables for legend
+            var ordinal = d3.scaleOrdinal()
+                .domain(["Cello", "French Horn", "Bass", "Viola", "Oboe", "English Horn", "Percussion", "Trombone", "Violin"])
+                .range([ "rgb(153, 107, 195)", "rgb(56, 106, 197)", "rgb(93, 199, 76)", "rgb(223, 199, 31)", "rgb(234, 118, 47)", "yellow", "rgb(255,182,193)", "gray", "black"]);
+            var svg = d3.select("svg");
+
+            //Creating the legend
+            svg.append("g")
+            .attr("class", "legendOrdinal")
+            .attr("transform", "translate(20,20)");
+
+            var legendOrdinal = d3.legendColor()
+                .shape("path", d3.symbol().type(d3.symbolSquare).size(150)())
+                .shapePadding(10)
+                .scale(ordinal);
+            svg.select(".legendOrdinal")
+                .call(legendOrdinal);
+
+        //Changing the format of "title"
+            var title = d3.select("#title");
+            title
+                .style("color", "blue")
+                .attr("class", "funkText");
+ 
+        </script>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+[
+    {
+        "country": "usa",
+        "value": 10
+
+    },
+    {
+        "country":"mexico",
+        "value":20
+    }
+]
